@@ -38,8 +38,9 @@ public class LCTest17
     }
 
     //根据字符中第 index 个数字字符，将这个数字字符代表的字母添加到letter中，letter包含前面递归添加的字符
-    private static void findCombinations(String str , int index , String letter)
+    private static void findCombinations(String str , int index , String letter)/**1、这里使用letter保存路径，即保存前面已经选择的字符*/
     {
+        /**2、结束条件：index=str.length()的时候，即给定字符的最后一个字符遍历完*/
         if(index==str.length())
         {
             res.add(letter);//已经遍历完str，将前面字符添加到res中
@@ -51,8 +52,10 @@ public class LCTest17
         int point = c-'0';//找到这个字符对应的字母表的位置
         String numStr = letterMap[point];//找出这个数字对应的字母表的字符
 
+        /**3、选择集：就是当前数字对应的字符*/
         for (int i = 0; i < numStr.length() ; i++)
         {
+            /**这里循环会选择到所有字符，直接选择并进入递归就可以，不需要撤销*/
             //将这一层的字符添加到letter中，并递归找寻下一层的字符。同时 index +1
             findCombinations(str , index+1 , letter+numStr.charAt(i));
         }
