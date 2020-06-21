@@ -3,7 +3,7 @@ package com.lkj.problem225;
 import java.util.LinkedList;
 import java.util.Queue;
 
-/**
+/** 这里是用队列实现栈，对比232题，用栈实现队列
 第二种解法，使用一个队列实现。
 关键是入队的时候，使得q1出队入队 q1.size()-1次
 

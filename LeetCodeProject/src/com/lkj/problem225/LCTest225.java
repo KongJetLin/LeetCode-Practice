@@ -3,7 +3,7 @@ package com.lkj.problem225;
 import java.util.LinkedList;
 import java.util.Queue;
 
-/**
+/** 这里是用队列实现栈，对比232题，用栈实现队列
 用2个队列实现。
  答案链接在：https://leetcode-cn.com/problems/implement-stack-using-queues/solution/yong-dui-lie-shi-xian-zhan-by-leetcode/
  指针解法关键是使用top来记录栈顶元素，同时出栈的时候，要记录最新的栈顶元素。
