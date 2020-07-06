@@ -5,7 +5,7 @@ import java.util.HashMap;
 /**
 滑动窗口法，时间复杂度是O(n)。
  参考：https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/solution/hua-dong-chuang-kou-by-powcai/
-
+类似题目：30,76，159，209，239，567，632,727
  */
 public class LCTest3
 {
