@@ -4,16 +4,27 @@ import java.util.*;
 
 public class Main {
 
-    public static void main(String[] args) {
-        Set<String> test = new HashSet<>();
-        test.add("java01");
-        test.add("java03");
-        test.add("java02");
-        Iterator<String> iterator = test.iterator();
-        while (iterator.hasNext())
+    public int[] constructArr(int[] a)
+    {
+        int[] mul = new int[a.length];
+
+        if(a==null || a.length==0)
+            return mul;
+
+        int left = 1;
+        for (int i = 0; i < a.length ; i++)
         {
-            System.out.println(iterator.next());
+            mul[i] = left;
+            left = left*a[i];
         }
+
+        int right = 1;
+        for (int i = a.length-1; i >= 0 ; i--)
+        {
+            mul[i] = mul[i]*right;
+            right = right*a[i];
+        }
+        return mul;
     }
 }
 

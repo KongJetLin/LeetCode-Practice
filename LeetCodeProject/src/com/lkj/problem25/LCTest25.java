@@ -21,8 +21,10 @@ public class LCTest25
         dummy.next = head;
 
         /**
-        创建2个指针 pre,end指向虚拟头结点，其中，pre用来指向每一段需要翻转链表的前一个结点，
-         end用来指向每一段需要翻转链表的最后一个结点，end用于确定需要翻转的链表的范围。
+        创建2个指针 pre,end指向虚拟头结点，其中，pre用来指向每一段需要翻转链表的前一个结点，end用来指向每一段需要翻转链表的最后一个结点。
+         为什么这样创建：pre指向翻转链表的前一个结点，用于将前面的链表与翻转后的链表连接起来；
+         end指向翻转链表的最后一个结点，为了在翻转之前使得要翻转的链表与后面的链表段分隔开！
+         （记住 2 个指针在链表前一个、链表最后一个！且一开始都在翻转链表的前一位！）
          开始的时候，end与pre都指向链表段的前一位！
 
          这里需要4个参数：start、end、pre、next，其中pre、end我们需要先确定，因为pre用于确定start，end用于确定next
@@ -31,7 +33,8 @@ public class LCTest25
         ListNode end = dummy;
         ListNode pre = dummy;
 
-        //首先，利用end开始寻找需要翻转的链表的范围，当end.next不为null，说明这段链表可能存在，开始寻找
+        //while里面的代码用于尝试翻转每一组，但是里面的代码只能翻转一组，为了能持续翻转，
+        // 用 while(end.next != null)，用于判断是否需要进入下一组的翻转
         while (end.next != null)
         {
             /**

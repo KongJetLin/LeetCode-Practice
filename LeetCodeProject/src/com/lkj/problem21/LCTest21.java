@@ -1,6 +1,6 @@
 package com.lkj.problem21;
 
-//时间复杂度：O(n+m)，n、m 是2个链表的长度
+//时间复杂度：O(n+m)，n、m 是2个链表的长度---对比23题，合并k个排序链表
 public class LCTest21
 {
     public class ListNode
