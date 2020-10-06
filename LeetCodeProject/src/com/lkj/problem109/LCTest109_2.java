@@ -62,7 +62,7 @@ public class LCTest109_2
             fast = fast.next.next;
         }
 
-        //如果链表只剩下一个结点，此时preMid=null，中间结点就是slow或者fast，不需要断开链表
+        //如果链表只剩下一个结点或者没有结点（结点为null），此时preMid=null，中间结点就是slow或者fast，不需要断开链表
         //否则，我们将 preMid.next = null，即断开前后链表（如果不断开链表，就不能区分左右子树的中间结点）
         if(preMid != null)
             preMid.next = null;

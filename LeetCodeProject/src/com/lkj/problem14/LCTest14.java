@@ -15,7 +15,7 @@ public class LCTest14
         if(strs == null || strs.length == 0)
             return "";
         /**
-         注意，这里必须将 prefix 赋予 strs[0]，然后循环中用 prefix与str[i] 比较，不能死的 prefix=""，
+         注意，这里必须将 prefix 赋予 strs[0]，然后循环中用 prefix与str[i] 比较，不能使得 prefix=""，
          因为有可能数组只有一个元素，不进入循环，此时返回prefix=""，事实上应该返回数组的这个元素！
          */
         String prefix = strs[0];

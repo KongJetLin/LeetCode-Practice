@@ -43,13 +43,13 @@ public class LRUCache extends LinkedHashMap<Integer , Integer>
     {
         //当键值对个数 size()大于缓存容量 capacity 的时候（put操作才会出现），则使得这个方法返回true，
         //即afterNodeInsertion 会移除链表头元素（最近最久未使用结点）
-        return size()>capacity;//注意，获取元素个数用size()方法
+        return super.size()>capacity;//注意，获取元素个数用size()方法（调用LinkedHashMap的size()方法）
     }
 
     //get方法要求没有找到键值对时返回-1，那么用 getOrDefault() 方法代替
     public int get(int key)
     {
-        return getOrDefault(key , -1);
+        return super.getOrDefault(key , -1);//调用LinkedHashMap的getOrDefault方法
     }
 
     //put方法直接复用 LinkedHashMap 即可

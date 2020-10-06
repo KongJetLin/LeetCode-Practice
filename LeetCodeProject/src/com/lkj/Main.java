@@ -4,6 +4,11 @@ import java.util.*;
 
 public class Main {
 
+    public static void main(String[] args)
+    {
+        System.out.println("");
+    }
+
     public int[] constructArr(int[] a)
     {
         int[] mul = new int[a.length];

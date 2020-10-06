@@ -20,6 +20,9 @@ public class LCTest1035
 {
     public int maxUncrossedLines(int[] A, int[] B)
     {
+        if(A==null ||  A.length==0 || B==null || B.length==0)
+            return 0;
+
         int maxLength = 0;
 
         int[][] dp = new int[A.length+1][B.length+1];
