@@ -13,13 +13,13 @@ public class LCTest6
      */
     public String convert(String s, int numRows)
     {
+        //这一个判断是必须的，因为下面的代码没办法覆盖只有一行的情况，如 “AB，1”情况
         if(numRows == 1)
-            return s;//不需要变化
+            return s;
 
         //每一个都用 StringBuild 表示
         List<StringBuilder> rowList = new ArrayList<>();
-        //初始化rowList 中的每一个元素，注意rowList的数量，最大值是 numRows，当 numRows>s.length 的时候，最大值是 s.length
-        //即最多的行数只能是字符串的长度
+        //初始化rowList 中的每一个元素，注意rowList的数量，最大值是 numRows，当 numRows>s.length 的时候，最大值是 s.length，即最多的行数只能是字符串的长度
         for (int i = 0; i < Math.min(numRows , s.length()) ; i++)
             rowList.add(new StringBuilder());
 
@@ -32,16 +32,16 @@ public class LCTest6
          */
         //初始化向下为false，因为我们添加了第一个元素后，row=0，会进行转弯，此时false变为true（向下）
         boolean goingDown = false;
-        int row = 0;//初始行数为0
+        int row = 0;
         for (int i = 0; i < s.length() ; i++)
         {
             rowList.get(row).append(s.charAt(i));
             if(row==0 || row==numRows-1)
                 goingDown = !goingDown;//到转弯的地方，先将转弯处元素添加进行，随后转弯
-            //goingDown = true,向下，行数增加
+
             row += goingDown?1:-1;
         }
-        //此时所有的行都已经添加了他们的元素，下面只需要将所有的行组合在一起即可
+
         //我们使用 StringBuilder 就可以组装 StringBuilder集合
         StringBuilder ret = new StringBuilder();
         for (int i = 0; i < rowList.size() ; i++)

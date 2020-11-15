@@ -30,7 +30,7 @@ public class LCTest13
             preNum = getValue(s.charAt(i));//注意更新前一个数
         }
         //遍历完毕后，我们发现每次都是加或者减前一个数，最后一个数还没有加（最后一个数在右边，肯定是加）
-        sum += preNum;//此时最后一个值赋予了preNum
+        sum += preNum;
 
         return sum;
     }

@@ -22,7 +22,8 @@ public class LCTest3
 
             2、如果当前字符 ch 包含在 map中，此时有2类情况：
              1）当前字符包含在当前有效的子段中，如：abca，当我们遍历到第二个a，当前有效最长子段是 abc，我们又遍历到a，
-             那么此时更新 left 为 map.get(a)+1=1，当前有效子段更新为 bca。此时 map.get(a)+1>left；
+             那么此时更新 left 为 map.get(a)+1=1，当前有效子段更新为 bca。此时 map.get(a)+1>left；(abcdb也是一样的)
+
              2）当前字符不包含在当前最长有效子段中，如：abba，我们先添加a,b进map，此时left=0，我们再添加b，发现map中包含b，
              而且b包含在最长有效子段中，就是1）的情况，我们更新 left=map.get(b)+1=2，此时子段更新为 b，而且map中仍然包含a，map.get(a)=0；
              随后，我们遍历到a，发现a包含在map中，且map.get(a)=0，如果我们像1）一样处理，就会发现 left=map.get(a)+1=1，实际上，left此时

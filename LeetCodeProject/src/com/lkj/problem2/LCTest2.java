@@ -23,29 +23,31 @@ public class LCTest2
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2)
     {
-        ListNode pre = new ListNode(0);//头指针
-        ListNode cur = pre;//移动指针
-
-        int carry = 0;//保存进位
+        //定义虚拟头结点
+        ListNode dummy = new ListNode(-1);
+        ListNode cur = dummy;
+        //进位
+        int carry = 0;
 
         //当l1与l2有一个不为null的时候，说明较长的一个还没有遍历完，应该继续遍历。
         //当 l1与l2 全为null，说明2个链表遍历完毕，结束循环
-        while(l1!=null || l2!=null)
+        //对于为null的一方，使用0替代
+        while (l1!=null || l2!=null)
         {
             //如果l1/l2 为null，将这一位视为补的0
-            int x = (l1==null ? 0 : l1.val);
-            int y = (l2==null ? 0 : l2.val);
+            int x = (l1==null)?0:l1.val;
+            int y = (l2==null)?0:l2.val;
 
-            int sum = x+y+carry;//注意加上上一层的进位
-            //更新进位，以及这一层保留的值
-            carry = sum/10;
-            sum = sum%10;//用sum保存这一层的值
-
-            //构建这一层的结点，并将cur指向它
-            ListNode curBit = new ListNode(sum);
-            cur.next = curBit;
-            //随后更新cur
+            //先计算当前位的值（注意将上一次的进位carry加进来）
+            int sum = x + y + carry;
+            cur.next = new ListNode(sum%10);//将进位去除（如果有进位）
             cur = cur.next;
+
+            //根据sum的值计算下一轮的进位，进位carry只能为0/1，因为9+9+1=19，最多只有一个进位
+            if(sum>=10)
+                carry = 1;
+            else
+                carry = 0;
 
             /*
             需要将l1与l2向后移动。但是需要在 l1与l2 不为null的时候才可以取next，否则null.next 就是空指针异常。
@@ -62,11 +64,11 @@ public class LCTest2
         }
 
         //注意，有可能l1与l2位数相同，他们最后一位有一个进位carry=1，都是由于l1.next与l2.next都是null，因此循环结束，但是carry应该计算
-        if(carry==1)//进位carry只能为0/1，因为9+9+1=19，最多只有一个进位
-        {
+        if(carry!=0)
             cur.next = new ListNode(carry);
-        }
+        else
+            cur.next = null;
 
-        return pre.next;//真正的链表头结点在pre的后一个结点
+        return dummy.next;
     }
 }
